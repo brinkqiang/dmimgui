@@ -6,8 +6,6 @@ LIST(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 INCLUDE(cmake/ModuleImport.cmake)
 INCLUDE(cmake/ModuleCompileOptions.cmake)
 ModuleSetCompileOptions()
-ModuleSetWinCompilerFlags()
-
 
 set(CMAKE_DEBUG_POSTFIX d)
 
@@ -39,7 +37,7 @@ target_sources(
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)
 
 if(IMGUI_BUILD_ALLEGRO5_BINDING)
-    find_package(Allegro CONFIG REQUIRED)
+    #find_package(Allegro CONFIG REQUIRED)
     target_link_libraries(${PROJECT_NAME} PRIVATE Allegro::allegro Allegro::allegro_ttf Allegro::allegro_font Allegro::allegro_main)
     target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_allegro5.cpp)
 endif()
@@ -289,7 +287,12 @@ install(
 )
 
 if (PROJECT_IS_TOP_LEVEL)
-    ModuleImportAll("thirdparty")
-    ExeImport("examples" "imgui;allegro")
+    # 
+    # ModuleImport("allegro" "thirdparty/dmallegro5")
+    # include_directories(${CMAKE_BINARY_DIR}/thirdparty/dmallegro5/include)
+    # include_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/dmallegro5/addons/primitives)
+    # include_directories(${CMAKE_CURRENT_SOURCE_DIR}/backends)
+    #   
+    # ExeImport("examples" "imgui;allegro")
 endif(PROJECT_IS_TOP_LEVEL)
 
