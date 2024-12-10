@@ -289,6 +289,7 @@ install(
 )
 
 if (PROJECT_IS_TOP_LEVEL)
-    #ExeImport("examples" "imgui")
+    
+    ExeImport("examples" "imgui")
 endif(PROJECT_IS_TOP_LEVEL)
 
