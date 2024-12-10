@@ -124,7 +124,7 @@ macro(ExeImport ModulePath DependsLib)
             LIST(FILTER BIN_SOURCES EXCLUDE REGEX "${CMAKE_CURRENT_SOURCE_DIR}/${ModulePath}/${subdir}/tpl/*")
 
             MESSAGE(STATUS "BIN_SOURCES ${LIB_SOURCES}")
-            IF(NOT BIN_SOURCES)
+            IF(BIN_SOURCES)
                 ADD_EXECUTABLE(${subdir} ${BIN_SOURCES})
                 TARGET_LINK_LIBRARIES(${subdir} ${DependsLib})
             ENDIF()
