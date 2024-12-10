@@ -289,7 +289,7 @@ install(
 )
 
 if (PROJECT_IS_TOP_LEVEL)
-    
-    ExeImport("examples" "imgui")
+    ModuleImportAll("thirdparty")
+    ExeImport("examples" "imgui;allegro")
 endif(PROJECT_IS_TOP_LEVEL)
 
