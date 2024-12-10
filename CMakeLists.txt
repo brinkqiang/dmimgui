@@ -287,3 +287,8 @@ install(
     FILE ${PROJECT_NAME}-targets.cmake
     DESTINATION share/${PROJECT_NAME}
 )
+
+if (PROJECT_IS_TOP_LEVEL)
+    #ExeImport("examples" "imgui")
+endif(PROJECT_IS_TOP_LEVEL)
+
