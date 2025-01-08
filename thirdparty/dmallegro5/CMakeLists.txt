@@ -189,7 +189,7 @@ option(WANT_PRIMITIVES "Enable primitives addon" on)
 option(WANT_NATIVE_DIALOG "Enable native dialog addon" on)
 option(WANT_VIDEO "Enable video player addon" on)
 
-option(WANT_MONOLITH "Include all addons in the main library" off)
+option(WANT_MONOLITH "Include all addons in the main library" on)
 
 #
 # Wrappers.

@@ -298,6 +298,18 @@ if (PROJECT_IS_TOP_LEVEL)
         add_executable(example_win32_directx12 examples/example_win32_directx12/main.cpp backends/imgui_impl_win32.cpp backends/imgui_impl_dx12.cpp)
         target_include_directories(example_win32_directx12 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/backends ${CMAKE_CURRENT_SOURCE_DIR})
         target_link_libraries(example_win32_directx12 imgui allegro d3d12.lib d3dcompiler.lib dxgi.lib)
+
+        ModuleImport("allegro" "thirdparty/dmallegro5")
+        include_directories(${CMAKE_BINARY_DIR}/thirdparty/dmallegro5/include)
+        include_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/dmallegro5/addons/primitives)
+        include_directories(${CMAKE_CURRENT_SOURCE_DIR}/backends)
+
+        add_executable(example_allegro5 examples/example_allegro5/main.cpp backends/imgui_impl_win32.cpp backends/imgui_impl_allegro5.cpp)
+        target_include_directories(example_allegro5 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/backends ${CMAKE_CURRENT_SOURCE_DIR})
+        target_compile_definitions(example_allegro5 PRIVATE IMGUI_USER_CONFIG="examples/example_allegro5/imconfig_allegro5.h")
+
+        target_link_libraries(example_allegro5 imgui allegro_monolith user32.lib)
+        
     endif()
 endif(PROJECT_IS_TOP_LEVEL)
 
