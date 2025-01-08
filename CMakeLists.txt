@@ -294,5 +294,10 @@ if (PROJECT_IS_TOP_LEVEL)
     # include_directories(${CMAKE_CURRENT_SOURCE_DIR}/backends)
     #   
     # ExeImport("examples" "imgui;allegro")
+    if(WIN32)
+        add_executable(example_win32_directx12 examples/example_win32_directx12/main.cpp backends/imgui_impl_win32.cpp backends/imgui_impl_dx12.cpp)
+        target_include_directories(example_win32_directx12 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/backends ${CMAKE_CURRENT_SOURCE_DIR})
+        target_link_libraries(example_win32_directx12 imgui allegro d3d12.lib d3dcompiler.lib dxgi.lib)
+    endif()
 endif(PROJECT_IS_TOP_LEVEL)
 
